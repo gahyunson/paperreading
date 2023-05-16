@@ -34,4 +34,5 @@ model.fit(train_generator, epochs=EPOCHS, batch_size=BATCH_SIZE,
           callbacks=[lr_cb, early_stop],)
 model.evaluate(test_generator, batch_size=BATCH_SIZE)
 
-model.save('model.h5')
+model.save('model_saved', save_format='tf')
+
