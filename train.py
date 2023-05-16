@@ -26,12 +26,12 @@ for layer in model.base_model.layers[:8]:
 model.build(input_shape=(None, 32, 32, 3))
 
 model.compile(loss='categorical_crossentropy',
-              optimizer=optimizers.Adam(lr=LEARNING_RATE),
-              callbacks=[lr_cb, early_stop],
+              optimizer=optimizers.Adam(learning_rate=LEARNING_RATE),
               metrics=['accuracy'])
 
 model.fit(train_generator, epochs=EPOCHS, batch_size=BATCH_SIZE,
-          validation_data=val_generator)
+          validation_data=val_generator,
+          callbacks=[lr_cb, early_stop],)
 model.evaluate(test_generator, batch_size=BATCH_SIZE)
 
 model.save('model.h5')
